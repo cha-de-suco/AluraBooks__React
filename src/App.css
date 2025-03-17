@@ -1,18 +1,18 @@
-@import url("./variaveis.css");
+@import url('./variaveis.css');
 
 ul {
-  list-style: none;
-}
+    list-style: none;
+  }
 
 .App {
-  background-image: var(--cor-de-fundo);
-  height: 100vh;
-  width: 100vw;
+    background: var(--cor-de-fundo);
+    height: 100vh;
+    width: 100vw;
 }
 
 .App-header {
-  display: flex;
-  background-color: var(--branco);
-  justify-content: space-between;
-  padding: 0  20px  0  10px;
+    display: flex;
+    background-color: var(--branco);
+    justify-content: space-between;
+    padding: 0  20px  0  10px;
 }
