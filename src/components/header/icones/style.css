@@ -1,0 +1,9 @@
+.header__icone {
+    align-items: center;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .icone {
+    width: 32px;
+  }
