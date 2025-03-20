@@ -44,20 +44,36 @@ const PesquisaContainer = styled.section`
     }
 
     .card {
-        background: linear-gradient(to right, #64748b, #4b5563);
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
         border-radius: 7px;
         border-left: 5px  solid  #1d4ed8;
         border-bottom: 3px  solid #1d4ed8;
+        height: 461px;
+        padding: 0;
+        width: 237px;
+    }
+        
+    .card__conteudo {
+        background: linear-gradient(to right, #64748b, #4b5563);
+        height: 100%;
         text-align: center;
         padding: 5px;
-        width: 20%
+        width: 100%
 
     }
 
 
 `
 
+function Card( {nome, descricao, src, classe} ) {
+    return (
+        <div className="card__conteudo">
+            <h2 className="card__titulo">{ nome }</h2>
+            <h3 className="card__subtitulo">{ descricao }</h3>
+            <img src={src} className= { classe } />
+        </div>
+    )
+}
 
 function Pesquisa () {
     const [ livrosPesquisados, setLivrosPesquisados ] = useState([])
@@ -79,18 +95,16 @@ function Pesquisa () {
                 />
                 
                 { livrosPesquisados.map( livro => (
-                            <div className="card">
-                                <h2 className="card__titulo">{ livro.nome }</h2>
-                                <h3 className="card__subtitulo">{ livro.descricao }</h3>
-                                <img src={livro.src} className="card__img" />
-                            </div>
+                        <Card nome={livro.nome} descricao={livro.descricao} src={livro.src}  classe="card__img"/>
                         ) 
                     ) 
                 }
-
             </section>
         </PesquisaContainer>
     )
 }
 
 export default Pesquisa
+export {Card}
+
+
