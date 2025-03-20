@@ -1,16 +1,11 @@
 import styled from "styled-components"
 import { useState } from "react"
-import { livros } from "./dadosPesquisa.js"
 
 const PesquisaContainer = styled.section`
    
     .pesquisa {
-        align-items:center;
         color: white;
-        display: flex;
-        flex-direction: column;
-        gap:10px;
-        justify-content:center;
+        text-align:center;
     }
 
     .pesquisa__titulo {
@@ -27,7 +22,7 @@ const PesquisaContainer = styled.section`
         border: 1px solid #FFF;
         background: transparent;
         border: 1px solid #FFF;
-        height: 4px;
+        height: 12px;
         padding: 20px 140px;
         border-radius: 50px;
         width: 370px;
@@ -44,40 +39,23 @@ const PesquisaContainer = styled.section`
     }
 
     .card {
+        background: linear-gradient(to right, #64748b, #4b5563);
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
         border-radius: 7px;
         border-left: 5px  solid  #1d4ed8;
         border-bottom: 3px  solid #1d4ed8;
-        height: 461px;
-        padding: 0;
-        width: 237px;
-    }
-        
-    .card__conteudo {
-        background: linear-gradient(to right, #64748b, #4b5563);
-        height: 100%;
         text-align: center;
         padding: 5px;
-        width: 100%
+        width: 20%
 
     }
 
 
 `
 
-function Card( {nome, descricao, src, classe} ) {
-    return (
-        <div className="card__conteudo">
-            <h2 className="card__titulo">{ nome }</h2>
-            <h3 className="card__subtitulo">{ descricao }</h3>
-            <img src={src} className= { classe } />
-        </div>
-    )
-}
 
 function Pesquisa () {
-    const [ livrosPesquisados, setLivrosPesquisados ] = useState([])
-
+    const [ textoDigitado, setTextDigitado ] = useState('')
     return (
         <PesquisaContainer>
             <section className="pesquisa">
@@ -95,10 +73,15 @@ function Pesquisa () {
                 />
                 
                 { livrosPesquisados.map( livro => (
-                        <Card nome={livro.nome} descricao={livro.descricao} src={livro.src}  classe="card__img"/>
+                            <div className="card">
+                                <h2 className="card__titulo">{ livro.nome }</h2>
+                                <h3 className="card__subtitulo">{ livro.descricao }</h3>
+                                <img src={livro.src} className="card__img" />
+                            </div>
                         ) 
                     ) 
                 }
+
             </section>
         </PesquisaContainer>
     )
