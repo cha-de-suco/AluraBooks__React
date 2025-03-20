@@ -1,15 +1,26 @@
 import styled from "styled-components";
-import { livros } from "./dadosLancamentos";
-import { Card } from "../pesquisa";
+import { livros } from "./dadosLancamentos.js";
+import { Card } from "../pesquisa/index.js";
 
 const ContainerLançamentos = styled.section`
 
     .lancamentos {
-        width: 100%
+        text-align: center;
+        width: 100%;
+        height: 100vh;
+    }
+        
+    .lancamentos__h2 {
+        font-weight: 700;
+        color: #EB9800;
     }
 
-    .lancamentos__card {
-        text-align: center;
+    .lancamentos__div {
+        border-top: 1px  solid #d9d9d9;
+        display: flex;
+        gap: 30px;
+        justify-contet: center;
+        
     }
 
     .card {
@@ -18,34 +29,21 @@ const ContainerLançamentos = styled.section`
         border-radius: 7px;
         border-left: 5px  solid  #1d4ed8;
         border-bottom: 3px  solid #1d4ed8;
+        color: white;
         text-align: center;
-        padding: 5px;
-        width: 20%
+        padding: 7px;
+        margin-top: 30px;
+        width: 17%;
     }
 
-    .lancamentos__lista {
-        align-items: center;
-        display:flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .lista__li {
-        width: 100%
-        background: linear-gradient(to right, #64748b, #4b5563);
-        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
-        border-radius: 7px;
-        border-left: 5px  solid  #1d4ed8;
-        border-bottom: 3px  solid #1d4ed8;
-        height: 461px;
-        padding: 0;
-        width: 237px;
-    }
 
     .lancamentos__img {
         max-height: 220px;
         max-witdh: 190px;
+    }
+
+    .separedor {
+        margin-right: 123px;
     }
 `
 
@@ -53,15 +51,12 @@ function UltimosLancamentos () {
     return (
         <ContainerLançamentos>
             <section className="lancamentos">
-                <div className="lancamentos__card">
-                    <h2>Últimos lancamentos</h2>
-                    <ul className="lancamentos__lista">
-                        { livros.map( livro => (
-                            <li className="lista__li">
-                                <Card nome={livro.nome} descricao={livro.descricao} src={livro.src} classe="lancamentos__img"/>
-                            </li>
-                        ))}
-                    </ul>
+                <h2 className="lancamentos__h2">ULTIMOS LANÇAMENTOS</h2>
+                <div className="lancamentos__div">
+                <div className="separedor"></div>
+                    { livros.map( livro => (
+                        <Card nome={livro.nome} descricao={livro.descricao} src={livro.src} classe="lancamentos__img"/>
+                    ))}
                 </div>
             </section>
         </ContainerLançamentos>

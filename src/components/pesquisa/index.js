@@ -1,11 +1,18 @@
 import styled from "styled-components"
+import { livros } from "./dadosPesquisa"
 import { useState } from "react"
 
 const PesquisaContainer = styled.section`
    
     .pesquisa {
+        align-items: center;
+        background: linear-gradient(90deg, #002F52 35%, #326589);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 85vh;
         color: white;
-        text-align:center;
+        margin-bottom: 90px;
     }
 
     .pesquisa__titulo {
@@ -53,9 +60,18 @@ const PesquisaContainer = styled.section`
 
 `
 
+function Card ({nome, descricao, src, classe}) {
+    return (
+        <div className="card">
+            <h2 className="card__titulo">{ nome }</h2>
+            <h3 className="card__subtitulo">{ descricao }</h3>
+            <img src={src} className={ classe }/>
+        </div>
+    )
+}
 
 function Pesquisa () {
-    const [ textoDigitado, setTextDigitado ] = useState('')
+    const [ livrosPesquisados, setLivrosPesquisados ] = useState([])
     return (
         <PesquisaContainer>
             <section className="pesquisa">
@@ -73,11 +89,12 @@ function Pesquisa () {
                 />
                 
                 { livrosPesquisados.map( livro => (
-                            <div className="card">
-                                <h2 className="card__titulo">{ livro.nome }</h2>
-                                <h3 className="card__subtitulo">{ livro.descricao }</h3>
-                                <img src={livro.src} className="card__img" />
-                            </div>
+                            <Card 
+                                nome={ livro.nome }
+                                descricao= { livro.descricao }
+                                src = { livro.src }
+                                classe="card__img"
+                            />
                         ) 
                     ) 
                 }
